@@ -11,7 +11,7 @@ import com.constq.demo.pojo.User;
 import com.constq.demo.service.UserService;
 
 @Service
-public class UserServiceImp implements UserService{
+public class UserServiceImp implements UserService {
 	@Autowired
 	private UserMapper userMapper;
 
@@ -28,6 +28,20 @@ public class UserServiceImp implements UserService{
 		// TODO Auto-generated method stub
 		return userMapper.getTotal();
 	}
-	
-	
+
+	public void addUser(User user) {
+		// TODO Auto-generated method stub
+		userMapper.addUser(user);
+	}
+
+	public void updateUser(User user) {
+		// TODO Auto-generated method stub
+		userMapper.updateUser(user);
+	}
+
+	public void deleteUserById(String id) {
+		// TODO Auto-generated method stub
+		userMapper.deleteUserById(id);
+	}
+
 }

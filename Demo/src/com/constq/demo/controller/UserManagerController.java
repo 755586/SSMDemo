@@ -39,4 +39,13 @@ public class UserManagerController {
 		map.put("rows", users);
 		return map ;
 	}
+	
+	@RequestMapping(value="",params={"action=update"})
+	@ResponseBody
+	public void update(HttpServletRequest request,String id,String name,String password){
+		User user = new User(id, name, password);
+		System.out.println(user);
+		userService.updateUser(user);
+		System.out.println("update");
+	}
 }

@@ -40,6 +40,7 @@
 			<div
 				style="margin-bottom:20px;font-size:14px;border-bottom:1px solid #ccc">
 				用户信息</div>
+
 			<div style="margin-bottom:10px">
 				<input name="name" class="easyui-textbox" required="true"
 					label="用户名:" style="width:100%">
@@ -52,9 +53,11 @@
 	</div>
 	<div id="dlg-buttons">
 		<a href="javascript:void(0)" class="easyui-linkbutton c6"
-			iconCls="icon-ok" onclick="saveUser()" style="width:90px">Save</a>
-		<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-cancel" 
-			onclick="javascript:$('#userDialog').dialog('close')" style="width:90px">Cancel</a>
+			iconCls="icon-ok" onclick="saveUser()" style="width:90px">Save</a> <a
+			href="javascript:void(0)" class="easyui-linkbutton"
+			iconCls="icon-cancel"
+			onclick="javascript:$('#userDialog').dialog('close')"
+			style="width:90px">Cancel</a>
 	</div>
 	<script type="text/javascript">
 		$('#dgUser').datagrid({
@@ -136,33 +139,33 @@
 				url = 'update&id=' + row.id;
 			}
 		}
-		function saveUser(){
-            $('#userForm').form('submit',{
-                url: 'user?action='+url,
-                onSubmit: function(){
-                    return $(this).form('validate');
-                },
-                success: function(result){
-                    var result = eval('('+result+')');
-                    if (result.errorMsg){
-                        $.messager.show({
-                            title: '操作失败',
-                            msg: result.errorMsg
-                        });
-                    } else {
-                        $('#userDialog').dialog('close');        // close the dialog
-                        $('#dgUser').datagrid('reload');    // reload the user data
-                    }
-                }
-            });
-        }
+		function saveUser() {
+			$('#userForm').form('submit', {
+				url : 'system/user?action=' + url,
+				onSubmit : function() {
+					return $(this).form('validate');
+				},
+				success : function(result) {
+					var result = eval('(' + result + ')');
+					if (result.errorMsg) {
+						$.messager.show({
+							title : '操作失败',
+							msg : result.errorMsg
+						});
+					} else {
+						$('#userDialog').dialog('close'); // close the dialog
+						$('#dgUser').datagrid('reload'); // reload the user data
+					}
+				}
+			});
+		}
 		function predelete() {
 			var row = $('#dgUser').datagrid('getSelected');
 			if (row) {
-				$.messager.confirm('提示','您确认删除此用户吗?',function(r) {
+				$.messager.confirm('提示', '您确认删除此用户吗?', function(r) {
 					if (r) {
 						$.post('user', {
-							action:'delete',
+							action : 'delete',
 							id : row.id
 						}, function(result) {
 							if (result.success) {
