@@ -123,12 +123,12 @@
 		});
 	</script>
 	<script type="text/javascript">
-		var url;
+		var action;
 		function preadd() {
 			$('#userDialog').dialog('open').dialog('center').dialog('setTitle',
 					'新增用户');
 			$('#userForm').form('clear');
-			url = "save";
+			action = "add";
 		}
 		function preupdate() {
 			var row = $('#dgUser').datagrid('getSelected');
@@ -136,16 +136,17 @@
 				$('#userDialog').dialog('open').dialog('center').dialog(
 						'setTitle', '编辑用户');
 				$('#userForm').form('load', row);
-				url = 'update&id=' + row.id;
+				action = 'update&id=' + row.id;
 			}
 		}
 		function saveUser() {
 			$('#userForm').form('submit', {
-				url : 'system/user?action=' + url,
+				url : 'system/user?action=' + action,
 				onSubmit : function() {
 					return $(this).form('validate');
 				},
 				success : function(result) {
+					console.log(result)
 					var result = eval('(' + result + ')');
 					if (result.errorMsg) {
 						$.messager.show({
@@ -164,10 +165,11 @@
 			if (row) {
 				$.messager.confirm('提示', '您确认删除此用户吗?', function(r) {
 					if (r) {
-						$.post('user', {
+						$.post('system/user', {
 							action : 'delete',
 							id : row.id
 						}, function(result) {
+							console.log(result)
 							if (result.success) {
 								$('#dgUser').datagrid('reload'); // reload the user data
 							} else {

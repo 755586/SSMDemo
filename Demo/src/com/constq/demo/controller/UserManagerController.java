@@ -1,5 +1,6 @@
 package com.constq.demo.controller;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.constq.demo.pojo.Factory;
 import com.constq.demo.pojo.Page;
 import com.constq.demo.pojo.User;
 import com.constq.demo.service.UserService;
@@ -42,10 +44,28 @@ public class UserManagerController {
 	
 	@RequestMapping(value="",params={"action=update"})
 	@ResponseBody
-	public void update(HttpServletRequest request,String id,String name,String password){
+	public User update(HttpServletRequest request,String id,String name,String password){
 		User user = new User(id, name, password);
-		System.out.println(user);
 		userService.updateUser(user);
-		System.out.println("update");
+		return user;
+	}
+	
+	@RequestMapping(value="",params={"action=delete"})
+	@ResponseBody
+	public Map<String, Object> delete(HttpServletRequest request,String id){
+		Map<String, Object> map = new HashMap<String, Object>();
+		userService.deleteUserById(id);
+		map.put("success", true);
+		return map;
+	}
+	
+	@RequestMapping(value="",params={"action=add"})
+	@ResponseBody
+	public User add(HttpServletRequest request,String name,String password){
+		User user = new User();
+		user.setName(name);
+		user.setPassword(password);
+		userService.addUser(user);
+		return user;
 	}
 }

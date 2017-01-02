@@ -11,7 +11,14 @@
 	<select id="getTotal" resultType="int">
 		select count(*) from t_user
 	</select>
-	<update id="updateUser" parameterType="User">
+	<update id="updateUser" parameterType="com.constq.demo.pojo.User">
 		update t_user set name=#{name},password=#{password} where id = #{id}
 	</update>
+	<insert id="addUser" parameterType="com.constq.demo.pojo.User">
+		insert into t_user(id,name,password) values (#{id},#{name},#{password})
+	</insert>
+	<delete id="deleteUserById"  parameterType="java.lang.String">
+		delete from t_user where id=#{id}
+	</delete>
+	
 </mapper>

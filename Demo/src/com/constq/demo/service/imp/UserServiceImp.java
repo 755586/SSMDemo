@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.constq.demo.mapper.UserMapper;
+import com.constq.demo.pojo.Factory;
 import com.constq.demo.pojo.Page;
 import com.constq.demo.pojo.User;
 import com.constq.demo.service.UserService;
@@ -31,6 +32,7 @@ public class UserServiceImp implements UserService {
 
 	public void addUser(User user) {
 		// TODO Auto-generated method stub
+		user.setId(Factory.getRandom());
 		userMapper.addUser(user);
 	}
 
