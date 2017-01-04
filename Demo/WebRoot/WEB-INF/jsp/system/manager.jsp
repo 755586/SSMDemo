@@ -33,12 +33,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <div data-options="region:'south',title:'South Title',split:true" style="height:100px;"></div>
     <div data-options="region:'east',title:'East',split:true" style="width:200px;"></div>
     <div data-options="region:'west',title:'West',split:true" style="width:200px;"></div>
-    <div data-options="region:'center',title:'center title'" style="padding:5px;background:#eee;">
-    	<div class="easyui-layout" data-options="fit:true">
-            <div data-options="region:'west',collapsed:true" style="width:180px"></div>
-            <div data-options="region:'center'"></div>
-        </div>
-        </div>
+    <div data-options="region:'center',title:'center title',href:'system/user'" style="padding:5px;background:#eee;">
+    
     </div>
 </body>
 </html>
