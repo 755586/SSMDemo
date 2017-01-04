@@ -22,6 +22,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-    <% request.getRequestDispatcher("system/user").forward(request, response); %>
+    <% request.getRequestDispatcher("system/manager").forward(request, response); %>
   </body>
 </html>
