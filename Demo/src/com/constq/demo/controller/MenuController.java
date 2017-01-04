@@ -1,5 +1,6 @@
 package com.constq.demo.controller;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -16,50 +17,69 @@ import com.constq.demo.pojo.Factory;
 import com.constq.demo.pojo.Page;
 import com.constq.demo.pojo.User;
 import com.constq.demo.service.UserService;
+import com.sdicons.json.model.JSONArray;
 
 @Controller
 @RequestMapping("/system/menu")
 public class MenuController {
-	
-	
-	@RequestMapping(value="")
+
+	@RequestMapping(value = "")
 	public String user(HttpServletRequest request) {
 		return "system/menu";
 	}
-	
-	@RequestMapping(value="",params={"action=list"})
+
+	@RequestMapping(value = "", params = { "action=list" })
 	@ResponseBody
-	public Object list(HttpServletRequest request,int page,int rows){
-		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("id", "1");
-		map.put("text", "用户管理");
-		return map;
+	public List<Map<String, Object>> list(HttpServletRequest request) {
+		JSONArray array = new JSONArray();
+		List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
+		List<Map<String, Object>> list2 = new ArrayList<Map<String, Object>>();
+		Map<String, Object> map1 = new HashMap<String, Object>();
+		map1.put("id", "1");
+		map1.put("text", "用户管理");
+		map1.put("url", "system/user");
+		list.add(map1);
+		Map<String, Object> map2 = new HashMap<String, Object>();
+		map2.put("id", "2");
+		map2.put("text", "参数管理");
+		Map<String, Object> map3 = new HashMap<String, Object>();
+		map3.put("id", "3");
+		list2.add(map3);
+		map3.put("text", "功能参数");
+		map2.put("children", list2);
+		list.add(map2);
+		return list;
+		/*
+		 * data: [{ text: 'Item1', state: 'closed', children: [{ text: 'Item11'
+		 * },{ text: 'Item12' }] },{ text: 'Item2' }]
+		 */
 	}
-	
-//	@RequestMapping(value="",params={"action=update"})
-//	@ResponseBody
-//	public User update(HttpServletRequest request,String id,String name,String password){
-//		User user = new User(id, name, password);
-//		userService.updateUser(user);
-//		return user;
-//	}
-//	
-//	@RequestMapping(value="",params={"action=delete"})
-//	@ResponseBody
-//	public Map<String, Object> delete(HttpServletRequest request,String id){
-//		Map<String, Object> map = new HashMap<String, Object>();
-//		userService.deleteUserById(id);
-//		map.put("success", true);
-//		return map;
-//	}
-//	
-//	@RequestMapping(value="",params={"action=add"})
-//	@ResponseBody
-//	public User add(HttpServletRequest request,String name,String password){
-//		User user = new User();
-//		user.setName(name);
-//		user.setPassword(password);
-//		userService.addUser(user);
-//		return user;
-//	}
+
+	// @RequestMapping(value="",params={"action=update"})
+	// @ResponseBody
+	// public User update(HttpServletRequest request,String id,String
+	// name,String password){
+	// User user = new User(id, name, password);
+	// userService.updateUser(user);
+	// return user;
+	// }
+	//
+	// @RequestMapping(value="",params={"action=delete"})
+	// @ResponseBody
+	// public Map<String, Object> delete(HttpServletRequest request,String id){
+	// Map<String, Object> map = new HashMap<String, Object>();
+	// userService.deleteUserById(id);
+	// map.put("success", true);
+	// return map;
+	// }
+	//
+	// @RequestMapping(value="",params={"action=add"})
+	// @ResponseBody
+	// public User add(HttpServletRequest request,String name,String password){
+	// User user = new User();
+	// user.setName(name);
+	// user.setPassword(password);
+	// userService.addUser(user);
+	// return user;
+	// }
 }
