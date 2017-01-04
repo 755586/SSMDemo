@@ -28,13 +28,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		src="js/jquery-easyui-1.5/jquery.easyui.min.js"></script>
   </head>
   
-  <body class="easyui-layout">
-    <div data-options="region:'north',title:'North Title',split:true" style="height:100px;"></div>
-    <div data-options="region:'south',title:'South Title',split:true" style="height:100px;"></div>
-    <div data-options="region:'east',title:'East',split:true" style="width:200px;"></div>
-    <div data-options="region:'west',title:'West',split:true" style="width:200px;"></div>
-    <div data-options="region:'center',title:'center title',href:'system/user'" style="padding:5px;background:#eee;">
-    
-    </div>
+  <body id="box" class="easyui-layout">
+    <div id="panel_north" data-options="region:'north',title:'North Title',split:true" style="height:100px;"></div>
+    <div id="panel_south" data-options="region:'south',title:'South Title',split:true" style="height:100px;"></div>
+    <div id="panel_east" data-options="region:'east',title:'East',split:true" style="width:200px;"></div>
+    <div id="panel_west" data-options="region:'west',title:'West',split:true" style="width:200px;"></div>
+    <div id="panel_center" data-options="region:'center',title:'center title'" style="padding:5px;background:#eee;"></div>
+    <script type="text/javascript"
+		src="js/jsp/manager.js"></script>
 </body>
 </html>
