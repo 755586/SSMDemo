@@ -18,7 +18,7 @@ import com.constq.demo.pojo.User;
 import com.constq.demo.service.UserService;
 
 @Controller
-@RequestMapping("/system/user")
+@RequestMapping("/system/center/user")
 public class UserController {
 	
 	@Autowired
@@ -26,7 +26,7 @@ public class UserController {
 	
 	@RequestMapping(value="")
 	public String user(HttpServletRequest request) {
-		return "system/user";
+		return "system/center/user";
 	}
 	
 	@RequestMapping(value="",params={"action=list"})

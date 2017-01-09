@@ -18,12 +18,14 @@ import com.constq.demo.pojo.User;
 import com.constq.demo.service.UserService;
 
 @Controller
-@RequestMapping("/system/manager")
-public class ManagerController {
+@RequestMapping("/system/center/index")
+public class IndexController {
+	
+	@Autowired
+	private UserService userService;
 	
 	@RequestMapping(value="")
 	public String user(HttpServletRequest request) {
-		return "system/manager";
+		return "system/center/index";
 	}
-	
 }

@@ -28,7 +28,7 @@
 	<ul id="menu" class="easyui-tree"></ul>
 	<script type="text/javascript">
 		$('#menu').tree({
-			url : 'system/menu?action=list',
+			url : 'system/west/menu?action=list',
 			method : 'post',
 			onClick : function(node) {
 				menuClick(node);
@@ -36,7 +36,18 @@
 		})
 		function menuClick(node) {
 			var url = node.url;
-			if (node.text == "用户管理") {
+			if(node.text == "首页"){
+				$('#panel_center').panel({
+					title : "首页",
+					href : node.url,
+					onLoad : function() {
+						console.log("加载用户信息成功~");
+					},
+					onLoadError : function() {
+						console.log("加载用户信息失败~");
+					}
+				});
+			}else if (node.text == "用户管理") {
 				$('#panel_center').panel({
 					title : "用户管理",
 					href : node.url,

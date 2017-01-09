@@ -31,7 +31,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <body id="box" class="easyui-layout">
     <div id="panel_north" data-options="region:'north',title:'North Title',split:true" style="height:100px;"></div>
     <div id="panel_south" data-options="region:'south',title:'South Title',split:true" style="height:100px;"></div>
-    <div id="panel_east" data-options="region:'east',title:'East',split:true" style="width:200px;"></div>
+    <div id="panel_east" data-options="region:'east',title:'East',split:true" style="width:300px;"></div>
     <div id="panel_west" data-options="region:'west',title:'West',split:true" style="width:200px;"></div>
     <div id="panel_center" data-options="region:'center',title:'center title'" style="padding:5px;background:#eee;"></div>
     <script type="text/javascript"

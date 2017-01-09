@@ -20,12 +20,12 @@ import com.constq.demo.service.UserService;
 import com.sdicons.json.model.JSONArray;
 
 @Controller
-@RequestMapping("/system/menu")
+@RequestMapping("/system/west/menu")
 public class MenuController {
 
 	@RequestMapping(value = "")
 	public String user(HttpServletRequest request) {
-		return "system/menu";
+		return "system/west/menu";
 	}
 
 	@RequestMapping(value = "", params = { "action=list" })
@@ -34,10 +34,15 @@ public class MenuController {
 		JSONArray array = new JSONArray();
 		List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
 		List<Map<String, Object>> list2 = new ArrayList<Map<String, Object>>();
+		Map<String, Object> map0 = new HashMap<String, Object>();
+		map0.put("id", "0");
+		map0.put("text", "首页");
+		map0.put("url", "system/center/index");
+		list.add(map0);
 		Map<String, Object> map1 = new HashMap<String, Object>();
 		map1.put("id", "1");
 		map1.put("text", "用户管理");
-		map1.put("url", "system/user");
+		map1.put("url", "system/center/user");
 		list.add(map1);
 		Map<String, Object> map2 = new HashMap<String, Object>();
 		map2.put("id", "2");
