@@ -61,7 +61,7 @@
 	</div>
 	<script type="text/javascript">
 		$('#dgUser').datagrid({
-			url : 'system/user?action=list',
+			url : 'system/center/user?action=list',
 			queryParams : {
 				code : "123456"
 			},
@@ -141,7 +141,7 @@
 		}
 		function saveUser() {
 			$('#userForm').form('submit', {
-				url : 'system/user?action=' + action,
+				url : 'system/center/user?action=' + action,
 				onSubmit : function() {
 					return $(this).form('validate');
 				},
@@ -165,7 +165,7 @@
 			if (row) {
 				$.messager.confirm('提示', '您确认删除此用户吗?', function(r) {
 					if (r) {
-						$.post('system/user', {
+						$.post('system/center/user', {
 							action : 'delete',
 							id : row.id
 						}, function(result) {

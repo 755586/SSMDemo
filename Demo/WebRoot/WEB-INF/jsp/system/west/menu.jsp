@@ -36,7 +36,7 @@
 		})
 		function menuClick(node) {
 			var url = node.url;
-			if(node.text == "首页"){
+			if (node.text == "首页") {
 				$('#panel_center').panel({
 					title : "首页",
 					href : node.url,
@@ -47,7 +47,7 @@
 						console.log("加载用户信息失败~");
 					}
 				});
-			}else if (node.text == "用户管理") {
+			} else if (node.text == "用户管理") {
 				$('#panel_center').panel({
 					title : "用户管理",
 					href : node.url,
@@ -58,13 +58,23 @@
 						console.log("加载用户信息失败~");
 					}
 				});
-			}else{//待更新
+				$('#panel_east').panel({
+					title : "HCharts",
+					href : 'system/east/hcharts',
+					onLoad : function() {
+						console.log("正在加载数据");
+					},
+					onLoadError : function() {
+						console.log("加载数据失败");
+					}
+				});
+			} else {//待更新
 				$.messager.alert({
-					title:"待更新",
-					msg:node.text,
-					fn:function(){
+					title : "待更新",
+					msg : node.text,
+					fn : function() {
 						console.log(node);
-					}	
+					}
 				});
 			}
 		}
