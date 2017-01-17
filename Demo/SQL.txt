@@ -1,0 +1,27 @@
+2017-1-17 创建词汇表
+1)创建数据库表
+	CREATE TABLE T_WORD
+	(
+	      ID NUMBER,
+	      ENGLISH VARCHAR2(40),
+	      CHINESE VARCHAR2(40),
+	      TYPE NUMBER,
+	      TYPE_NAME VARCHAR2(40),
+	      RANK NUMBER,
+	      PRIMARY KEY(ID)
+	);
+2)创建序列
+	create sequence seq_id_add
+	minvalue 1
+	maxvalue 99999999
+	start with 1
+	increment by 1
+	nocache order;
+3)创建触发器
+	CREATE OR REPLACE TRIGGER AUTOINCREMENT
+  	BEFORE INSERT ON T_WORD
+  	FOR EACH ROW
+	WHEN (NEW.ID IS NULL)
+	BEGIN
+	SELECT seq_id_add.NEXTVAL INTO :NEW.ID FROM DUAL;
+	END;
