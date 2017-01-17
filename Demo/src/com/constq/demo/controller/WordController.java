@@ -1,8 +1,12 @@
 package com.constq.demo.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -29,14 +33,33 @@ public class WordController {
 	
 	@RequestMapping(value="",params={"action=list"})
 	@ResponseBody
-	public Map<String, Object> list(HttpServletRequest request,int page,int rows){
-		Integer total = wordService.getTotal();
-		int start = (page-1)*rows+1;
-		int end = (page)*rows;
-		List<Word> words = wordService.findAllWordByPage(new Page(start,end));
+	public Map<String, Object> list(HttpServletRequest request){
+		List<Word> words = wordService.findAllWord();
+		Set<Integer>type = new HashSet<Integer>();
+		String[] type_name = new String[100];
+		int[] num = new int[100];
+		for(Word w:words){
+			int key = w.getType();
+			if(!type.contains(key)){
+				type.add(key);
+				type_name[key] = w.getType_name();
+				num[key] = 1;
+			}else{
+				num[key] = num[key]+1;
+			}
+		}
+		List< Map<String, Object> >list = new ArrayList<Map<String,Object>>();
+		for(Integer key:type){
+			Map<String, Object> obj = new HashMap<String, Object>();
+			obj.put("name", type_name[key]);
+			obj.put("y", num[key]);
+			list.add(obj);
+			System.out.println(type_name[key]+" "+num[key]);
+		}
 		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("total", total);
-		map.put("rows", words);
+		map.put("data", list);
+		map.put("colorByPoint", true);
+		map.put("name", "词汇比例");
 		return map ;
 	}
 	

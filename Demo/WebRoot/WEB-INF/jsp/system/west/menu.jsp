@@ -47,9 +47,9 @@
 						console.log("加载用户信息失败~");
 					}
 				});
-			}else if(node.text == "词汇展示"){
+			}else if(node.text == "词汇统计"){
 				$('#panel_center').panel({
-					title : "词汇展示",
+					title : "词汇统计",
 					href : node.url,
 					onLoad : function() {
 						console.log("加载词汇信息成功~");

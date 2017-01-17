@@ -32,6 +32,10 @@
 	src="js/jquery-easyui-1.5/jquery.easyui.min.js"></script>
 <script type="text/javascript"
 	src="js/jquery-easyui-portal/jquery.portal.js"></script>
+<script type="text/javascript"
+	src="js/highcharts-5.0.6/highcharts.js"></script>
+<script type="text/javascript"
+	src="js/highcharts-5.0.6/modules/exporting.js"></script>
 </head>
 
 <body id="box" class="easyui-layout" onselectstart="return false">
