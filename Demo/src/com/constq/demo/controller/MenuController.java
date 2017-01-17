@@ -35,6 +35,11 @@ public class MenuController {
 		map1.put("text", "用户管理");
 		map1.put("url", "system/center/user");
 		list.add(map1);
+		Map<String, Object> word = new HashMap<String, Object>();
+		word.put("id", "4");
+		word.put("text", "词汇展示");
+		word.put("url", "system/center/word");
+		list.add(word);
 		Map<String, Object> map2 = new HashMap<String, Object>();
 		map2.put("id", "2");
 		map2.put("text", "参数管理");

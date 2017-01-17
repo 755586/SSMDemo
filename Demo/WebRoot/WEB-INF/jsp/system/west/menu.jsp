@@ -47,6 +47,17 @@
 						console.log("加载用户信息失败~");
 					}
 				});
+			}else if(node.text == "词汇展示"){
+				$('#panel_center').panel({
+					title : "词汇展示",
+					href : node.url,
+					onLoad : function() {
+						console.log("加载词汇信息成功~");
+					},
+					onLoadError : function() {
+						console.log("加载词汇信息失败~");
+					}
+				});
 			} else if (node.text == "用户管理") {
 				$('#panel_center').panel({
 					title : "用户管理",

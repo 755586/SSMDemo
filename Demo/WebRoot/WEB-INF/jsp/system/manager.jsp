@@ -34,7 +34,7 @@
 	src="js/jquery-easyui-portal/jquery.portal.js"></script>
 </head>
 
-<body id="box" class="easyui-layout">
+<body id="box" class="easyui-layout" onselectstart="return false">
 	<div id="panel_north"
 		data-options="region:'north',title:'North Title',split:true"
 		style="height:100px;"></div>
