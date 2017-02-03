@@ -1,6 +1,7 @@
 package com.constq.demo.service.imp;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -43,6 +44,11 @@ public class WordServiceImp implements WordService {
 	public void deleteWordById(int id) {
 		// TODO Auto-generated method stub
 		WordMapper.deleteWordById(id);
+	}
+
+	public List<Word> findAllWordByTypeAndRank(Map<String, Object> tr) {
+		// TODO Auto-generated method stub
+		return WordMapper.findAllWordByTypeAndRank(tr);
 	}
 
 }

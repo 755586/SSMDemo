@@ -16,8 +16,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.constq.demo.pojo.Page;
+import com.constq.demo.pojo.User;
 import com.constq.demo.pojo.Word;
 import com.constq.demo.service.WordService;
+import com.sun.corba.se.impl.oa.toa.TOA;
 
 @Controller
 @RequestMapping("/system/center/word")
@@ -68,10 +70,32 @@ public class WordController {
 		return map ;
 	}
 	
+	@RequestMapping(value="/wordEdit",params={"action=list"})
+	@ResponseBody
+	public Map<String, Object> wordEdit(HttpServletRequest request,int page,int rows){
+//		Map<String, Object> tr = new HashMap<String, Object>();
+//		tr.put("type_name", "动物");
+//		tr.put("rank", "2");
+//		List<Word> test = wordService.findAllWordByTypeAndRank(tr);
+//		System.out.println(test.get(0));
+		int start = (page-1)*rows+1;
+		int end = (page)*rows;
+		List<Word> words = wordService.findAllWordByPage(new Page(start, end));
+		Integer total = wordService.getTotal();
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("total", total);
+		map.put("rows", words);
+		return map ;
+	}
+	
 	@RequestMapping(value="",params={"action=update"})
 	@ResponseBody
-	public Word update(HttpServletRequest request,String id,String name,String password){
+	public Word update(HttpServletRequest request,String id,String english,String chinese,String rank){
 		Word word = new Word();
+		word.setId(Integer.parseInt(id));
+		word.setEnglish(english);
+		word.setChinese(chinese);
+		word.setRank(Integer.parseInt(rank));
 		wordService.updateWord(word);
 		return word;
 	}
@@ -80,6 +104,7 @@ public class WordController {
 	@ResponseBody
 	public Map<String, Object> delete(HttpServletRequest request,String id){
 		Map<String, Object> map = new HashMap<String, Object>();
+		wordService.deleteWordById(Integer.parseInt(id));
 		map.put("success", true);
 		return map;
 	}

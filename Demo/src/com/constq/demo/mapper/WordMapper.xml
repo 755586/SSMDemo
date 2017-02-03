@@ -8,11 +8,14 @@
 	<select id="findAllWordByPage" resultType="com.constq.demo.pojo.Word" parameterType="com.constq.demo.pojo.Page">
 		select a.* from (select rownum as b , t_word.* from t_word)a where a.b between #{start} and #{end}
 	</select>
+	<select id="findAllWordByTypeAndRank" resultType="com.constq.demo.pojo.Word" parameterType="Map">
+		select * from t_word a where a.type_name= #{type_name} and a.rank=#{rank}
+	</select>
 	<select id="getTotal" resultType="int">
 		select count(*) from t_word
 	</select>
 	<update id="updateWord" parameterType="com.constq.demo.pojo.Word">
-		update t_word set english=#{english},chinese=#{chinese},type=#{type},type_name=#{type_name},rank=#{rank} where id = #{id}
+		update t_word set english=#{english},chinese=#{chinese},rank=#{rank} where id = #{id}
 	</update>
 	<insert id="addWord" parameterType="com.constq.demo.pojo.Word">
 		insert into t_word(english,chinese,type,type_name,rank) values (#{english},#{chinese},#{type},#{type_name},#{rank})
