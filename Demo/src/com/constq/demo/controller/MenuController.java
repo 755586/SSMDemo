@@ -25,28 +25,48 @@ public class MenuController {
 	public List<Map<String, Object>> list(HttpServletRequest request) {
 		List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
 		List<Map<String, Object>> list2 = new ArrayList<Map<String, Object>>();
+		List<Map<String, Object>> list3 = new ArrayList<Map<String, Object>>();
+		/*首页*/
 		Map<String, Object> map0 = new HashMap<String, Object>();
 		map0.put("id", "0");
 		map0.put("text", "首页");
 		map0.put("url", "system/center/index");
 		list.add(map0);
+		
+		/*用户*/
 		Map<String, Object> map1 = new HashMap<String, Object>();
 		map1.put("id", "1");
 		map1.put("text", "用户管理");
 		map1.put("url", "system/center/user");
 		list.add(map1);
+		
+		/*词汇*/
 		Map<String, Object> word = new HashMap<String, Object>();
 		word.put("id", "4");
-		word.put("text", "词汇统计");
-		word.put("url", "system/center/word");
+		word.put("text", "词汇管理");
+		/*词汇-词汇统计*/
+		Map<String, Object> word1 = new HashMap<String, Object>();
+		word1.put("id", "5");
+		word1.put("text", "词汇统计");
+		word1.put("url", "system/center/word/chart");
+		list3.add(word1);
+		/*词汇-词汇编辑*/
+		Map<String, Object> word2 = new HashMap<String, Object>();
+		word2.put("id", "5");
+		word2.put("text", "词汇编辑");
+		word2.put("url", "system/center/word/edit");
+		list3.add(word2);
+		word.put("children", list3);
 		list.add(word);
+		/*参数*/
 		Map<String, Object> map2 = new HashMap<String, Object>();
 		map2.put("id", "2");
 		map2.put("text", "参数管理");
+		/*参数 -功能参数*/
 		Map<String, Object> map3 = new HashMap<String, Object>();
 		map3.put("id", "3");
-		list2.add(map3);
 		map3.put("text", "功能参数");
+		list2.add(map3);
 		map2.put("children", list2);
 		list.add(map2);
 		return list;

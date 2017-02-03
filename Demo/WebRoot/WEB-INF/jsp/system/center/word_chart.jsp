@@ -57,7 +57,7 @@
 				series:[]
 			};
 			$.ajax({
-				url : 'system/center/word?action=list',
+				url : 'system/center/word/chart?action=list',
 				dataType : 'json',
 				success : function(data) {
 					console.log(data);

@@ -52,10 +52,21 @@
 					title : "词汇统计",
 					href : node.url,
 					onLoad : function() {
-						console.log("加载词汇信息成功~");
+						console.log("加载词汇统计信息成功~");
 					},
 					onLoadError : function() {
-						console.log("加载词汇信息失败~");
+						console.log("加载词汇统计信息失败~");
+					}
+				});
+			}else if(node.text == "词汇编辑"){
+				$('#panel_center').panel({
+					title : "词汇编辑",
+					href : node.url,
+					onLoad : function() {
+						console.log("加载词汇编辑信息成功~");
+					},
+					onLoadError : function() {
+						console.log("加载词汇编辑信息失败~");
 					}
 				});
 			} else if (node.text == "用户管理") {

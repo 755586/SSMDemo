@@ -26,12 +26,17 @@ public class WordController {
 	@Autowired
 	private WordService wordService;
 	
-	@RequestMapping(value="")
+	@RequestMapping(value="/chart")
 	public String word(HttpServletRequest request) {
-		return "system/center/word";
+		return "system/center/word_chart";
 	}
 	
-	@RequestMapping(value="",params={"action=list"})
+	@RequestMapping(value="/edit")
+	public String edit(HttpServletRequest request) {
+		return "system/center/word_edit";
+	}
+	
+	@RequestMapping(value="/chart",params={"action=list"})
 	@ResponseBody
 	public Map<String, Object> list(HttpServletRequest request){
 		List<Word> words = wordService.findAllWord();
