@@ -27,13 +27,22 @@
 <body>
 	<ul id="menu" class="easyui-tree"></ul>
 	<script type="text/javascript">
-		$('#menu').tree({
+		$.ajax({
 			url : 'system/west/menu?action=list',
-			method : 'post',
-			onClick : function(node) {
-				menuClick(node);
+			dataType : 'json',
+			success : function(data) {
+				$('#menu').tree({
+					data:data,
+					onClick : function(node) {
+						menuClick(node);
+					}
+				})
+			},
+			error : function() {
+				console.log("加载菜单数据失败");
 			}
 		})
+
 		function menuClick(node) {
 			var url = node.url;
 			if (node.text == "首页") {
@@ -47,7 +56,7 @@
 						console.log("加载用户信息失败~");
 					}
 				});
-			}else if(node.text == "词汇统计"){
+			} else if (node.text == "词汇统计") {
 				$('#panel_center').panel({
 					title : "词汇统计",
 					href : node.url,
@@ -58,7 +67,7 @@
 						console.log("加载词汇统计信息失败~");
 					}
 				});
-			}else if(node.text == "词汇编辑"){
+			} else if (node.text == "词汇编辑") {
 				$('#panel_center').panel({
 					title : "词汇编辑",
 					href : node.url,
@@ -91,13 +100,13 @@
 					}
 				});
 			} else {//待更新
-				$.messager.alert({
+				/* $.messager.alert({
 					title : "待更新",
 					msg : node.text,
 					fn : function() {
 						console.log(node);
 					}
-				});
+				}); */
 			}
 		}
 	</script>
