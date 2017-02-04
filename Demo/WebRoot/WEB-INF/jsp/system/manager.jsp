@@ -11,7 +11,7 @@
 <head>
 <base href="<%=basePath%>">
 
-<title>菜单导航</title>
+<title>地鼠游戏后台管理系统</title>
 
 <meta http-equiv="pragma" content="no-cache">
 <meta http-equiv="cache-control" content="no-cache">
