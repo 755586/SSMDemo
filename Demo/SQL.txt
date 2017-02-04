@@ -25,3 +25,51 @@
 	BEGIN
 	SELECT seq_id_add.NEXTVAL INTO :NEW.ID FROM DUAL;
 	END;
+	
+4)创建后台菜单表
+-- Create table
+create table T_MENU
+(
+  id       VARCHAR2(32) not null,
+  name     VARCHAR2(200) not null,
+  url      VARCHAR2(2000),
+  pid      VARCHAR2(32),
+  sort     NUMBER(2),
+  status   NUMBER(1) default 1 not null,
+  mod_user VARCHAR2(32),
+  mod_time DATE,
+  icon     VARCHAR2(200),
+  target   VARCHAR2(30)
+)
+tablespace USERS
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64
+    next 8
+    minextents 1
+    maxextents unlimited
+  );
+-- Add comments to the columns 
+comment on column T_MENU.name
+  is '名称';
+comment on column T_MENU.url
+  is '路径';
+comment on column T_MENU.pid
+  is '父级ID';
+comment on column T_MENU.sort
+  is '同一级目录下菜单的显示顺序';
+comment on column T_MENU.status
+  is '''状态，-1/0/1';
+comment on column T_MENU.mod_user
+  is '最后修改人';
+comment on column T_MENU.mod_time
+  is '最后修改时间';
+comment on column T_MENU.icon
+  is '图标';
+comment on column T_MENU.target
+  is '打开菜单的位置，可为_blank、_parent、_top、_self或其它';
+
+
